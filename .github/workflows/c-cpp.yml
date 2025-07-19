@@ -1,0 +1,31 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies (if any)
+        run: sudo apt-get update
+
+      - name: Build with Makefile
+        run: make
+
+      - name: Run Valgrind (memory check)
+        run: |
+          sudo apt-get install -y valgrind
+          valgrind --leak-check=full ./mysh < /dev/null || true
+
+      - name: Run sample command test
+        run: |
+          echo "pwd" | ./mysh
