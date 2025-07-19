@@ -1,6 +1,8 @@
 #ifndef EXECUTOR_H
 #define EXECUTOR_H
 
-void execute_command(char **args);
+// Executes an entire command line that may contain multiple piped commands.
+// This function uses the parser to split commands, handle redirection, and execute them via fork/exec.
+void execute_pipeline(char *cmd_line);
 
-#endif
+#endif // EXECUTOR_H

@@ -1,14 +1,16 @@
-# Makefile
-CC=gcc
-CFLAGS=-Iinclude -Wall -g
-SRC=src/main.c src/parser.c src/executor.c src/utils.c
-OBJ=$(SRC:.c=.o)
-BIN=mysh
+CC = gcc
+CFLAGS = -Iinclude -Wall -g
+SRCS = src/main.c src/executor.c src/parser.c
+OBJS = $(SRCS:.c=.o)
+TARGET = mysh
 
-all: $(BIN)
+all: $(TARGET)
 
-$(BIN): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f src/*.o $(BIN)
+	rm -f $(OBJS) $(TARGET)
