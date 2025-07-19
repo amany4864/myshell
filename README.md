@@ -1,94 +1,72 @@
+# 🐚 `mysh` — A Custom Unix Shell in C
 
-
-## ✅ **Project Summary: Custom Unix Shell (`mysh`)**
-
-built a mini shell in C that mimics basic functionalities of Unix-like shells. This shell supports:
-
-### 🔧 Core Features
-
-* **Command Execution**: Run basic commands like `ls`, `echo`, `cat`, `pwd`, etc.
-* **Pipes (`|`)**: Commands can be chained using pipes (`ls | wc -l`).
-* **I/O Redirection**:
-
-  * Input redirection with `<` (e.g., `cat < file.txt`)
-  * Output redirection with `>` (e.g., `echo "hi" > file.txt`)
-* **Built-in Commands**:
-
-  * `cd`: Changes the current working directory.
-  * `exit`: Exits the shell.
-* **Memory Safe**: Verified using Valgrind to ensure there are no memory leaks.
+`mysh` is a simple custom-built Unix-like shell written in C. It supports basic command execution, piping, input/output redirection, and a couple of built-in commands like `cd` and `exit`. The goal of this project was to get hands-on experience with low-level system programming and understand how shells work under the hood.
 
 ---
 
-## 📝 `README.md`
+## ✨ Features
 
-```markdown
-# mysh – Custom Unix Shell in C
+- **Command Execution**
+  - Supports basic Unix commands like `ls`, `echo`, `cat`, `pwd`, etc.
+  - Example: `echo Hello World`, `ls -l`, `cat file.txt`
 
-`mysh` is a lightweight, custom-built Unix shell implemented in C. It supports essential shell functionalities like executing commands, piping, input/output redirection, and basic built-in commands like `cd` and `exit`.
-
----
-
-## Features
-
-- ✅ **Basic command execution**
-  - Example: `ls`, `pwd`, `echo hello`
-
-- ✅ **Pipe support**
+- **Pipes (`|`)**
+  - Chain commands using pipes
   - Example: `ls | grep .c | wc -l`
 
-- ✅ **Input/Output Redirection**
-  - Input: `cat < file.txt`
-  - Output: `echo hello > out.txt`
-  - Combined: `cat < file.txt | tr a-z A-Z > out.txt`
+- **Input/Output Redirection**
+  - Input: `cat < input.txt`
+  - Output: `echo Hello > output.txt`
+  - Combined: `cat < input.txt | tr a-z A-Z > output.txt`
 
-- ✅ **Built-in commands**
-  - `cd [dir]`: Change directory
+- **Built-in Commands**
+  - `cd <dir>`: Change the current working directory
   - `exit`: Exit the shell
 
-- ✅ **Memory Safety**
-  - Verified with Valgrind for zero memory leaks.
+- **Memory Safe**
+  - Verified using Valgrind — no memory leaks 🎉
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```
-
 mysh/
 ├── Makefile           # Build script
-├── README.md          # Project documentation
+├── README.md          # This file
 ├── mysh               # Compiled shell binary
 ├── include/
-│   ├── parser.h       # Header for command parsing
-│   └── executor.h     # Header for executing parsed commands
+│   ├── parser.h       # Header for parsing logic
+│   └── executor.h     # Header for execution logic
 ├── src/
 │   ├── main.c         # Entry point with REPL loop
-│   ├── parser.c       # Tokenizes and parses commands
-│   └── executor.c     # Executes commands, handles pipes/redirection
-
-````
-
----
-
-## Build Instructions
-
-1. Clone or download the project.
-2. Compile using the provided Makefile:
-
-```bash
-make
-````
-
-3. Run the shell:
-
-```bash
-./mysh
+│   ├── parser.c       # Tokenizer and parser
+│   └── executor.c     # Handles execution, piping, redirection
 ```
 
 ---
 
-## Sample Usage
+## 🛠️ How to Build & Run
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/yourusername/mysh.git
+   cd mysh
+   ```
+
+2. Build the project using `make`:
+   ```bash
+   make
+   ```
+
+3. Run the shell:
+   ```bash
+   ./mysh
+   ```
+
+---
+
+## ▶️ Sample Usage
 
 ```bash
 echo hello
@@ -103,11 +81,9 @@ exit
 
 ---
 
-## Testing and Debugging
+## 🧪 Testing & Debugging
 
-### Run with Valgrind:
-
-To verify memory safety:
+To check for memory leaks and runtime errors, use:
 
 ```bash
 valgrind ./mysh
@@ -115,28 +91,23 @@ valgrind ./mysh
 
 ---
 
-## Limitations
+## ⚠️ Known Limitations
 
-* Built-in commands cannot be piped (`cd | ls` won't work).
-* No support for background jobs (`&`) or advanced scripting features.
-* No signal handling or command history yet.
-
----
-
-## Future Improvements
-
-* Support for background processes
-* Command history
-* Auto-completion
-* Environment variable expansion
+- Built-in commands like `cd` and `exit` cannot be used in pipes (e.g., `cd | ls` won't work).
+- No support for background jobs (`&`) or advanced scripting.
+- Lacks signal handling (e.g., `Ctrl+C`) and command history.
 
 ---
 
-## Author
+## 🚀 Possible Future Improvements
 
-👤 [Aman Yadav](https://github.com/amany4864)
+- Background process support
+- Command history
+- Auto-completion
+- Environment variable expansion
 
 ---
 
+## 👤 Author
 
-```
+**Aman Yadav**
