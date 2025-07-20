@@ -50,7 +50,7 @@ mysh/
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/amany4864/mysh.git
+   git clone https://github.com/amany4864/myshell.git
    cd mysh
    ```
 
